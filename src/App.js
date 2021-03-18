@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import ProtectedRoute from '../src/components/routes/ProtectedRoute';
 
+
 function App() {
   const [isAuth, setIsAuth] = useState(true);
   return (
