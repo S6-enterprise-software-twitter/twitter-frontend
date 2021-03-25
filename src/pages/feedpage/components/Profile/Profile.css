@@ -1,0 +1,62 @@
+.section-profile{
+}
+
+.profile-block{
+    -webkit-box-shadow: 0px 0px 12px 6px rgba(227,227,227,1);
+    -moz-box-shadow: 0px 0px 12px 6px rgba(227,227,227,1);
+    box-shadow: 0px 0px 12px 6px rgba(227,227,227,1);
+    width: 100%;
+    height: 350px;
+    border-radius: 5px;
+}
+
+/* Banner & Profile picture */
+.profile-banner{
+    position: relative;
+    background-image: url('../../../../assets/Profile_banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+}
+
+.profile-circle{
+    background-image: url('../../../../assets/Profile picture.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid #fff;
+    /* Place the div in the correct position */
+    position: absolute;
+    top: 100%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+    height: 75px;
+    width: 75px;
+    background-color: #fff;
+    border-radius: 50px;
+}
+
+/* Profile information */
+.profile-information{
+
+}
+
+.profile-information > h3{
+    padding-top: 50px;
+    text-align: center;
+}
+.profile-description{
+    display: flex;
+    text-align: center;
+    padding: 0 25px;
+}
+
+.profile-description > .column{
+    flex:50%;
+    margin: 0 10px;
+}
+
+.profile-description > div:first-of-type > h3{
+    color: #FA5216;
+}

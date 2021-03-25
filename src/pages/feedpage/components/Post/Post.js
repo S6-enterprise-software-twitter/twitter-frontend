@@ -10,8 +10,7 @@ function Post() {
        alert("Deze functie wordt nog ingebouwd!");
    }
   return (
-    <div className="post">
-        <h3>Startpagina</h3>
+    <div className="section-post">
         <div className="post-block">
             <textarea placeholder="What's up for today..."></textarea>
             <hr/>

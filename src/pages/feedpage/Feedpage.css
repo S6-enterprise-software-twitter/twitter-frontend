@@ -1,9 +1,27 @@
 .feedpage-row{
     display: flex;
     justify-content: space-around;
+    width: 75%;
+    margin: 25px auto;
 }
 
 .feedpage-column{
     /* background-color: blue; */
     width: 100%;
+}
+
+.feedpage-column-1{
+    flex: 0 0 215px;
+}
+
+.feedpage-column-1{
+    flex: 0 0 25%;
+}
+
+.feedpage-column-2{
+    flex: 0 0 50%;
+}
+
+.feedpage-column-3{
+    flex: 0 0 25%;
 }
