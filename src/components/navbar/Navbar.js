@@ -1,26 +1,24 @@
 import React, {useEffect} from 'react';
 import User from '../../assets/menu/user.svg';
 import { decodeJWT } from '../../service/Auth';
+import { useKeycloak } from '@react-keycloak/web';
+import { findById, register, test } from '../../service/UserService';
 
-import {initOptions, keycloak} from '../../service/Service';
-
+import {initOptions, keycloak, logout} from '../../service/Service';
+import Keycloak from 'keycloak-js';
 import "./Navbar.css";
 
 function Navbar() {
-  let userData =  decodeJWT(window.localStorage.getItem("react-token"));
+  const {keycloak} = useKeycloak();
 
   function LogoutUser(){
-    console.log(keycloak);
-    console.log("Logged out")
-    // console.log(keycloak.authenticated)
     keycloak.logout({ redirectUri: 'http://localhost:3000' });
-    // keycloak.logout();
-    // window.localStorage.removeItem("react-token");
-    // window.localStorage.removeItem("react-refresh-token");
-    // window.location.href = "/";
+    localStorage.removeItem("react-token", keycloak.token);
+    localStorage.removeItem("react-refresh-token", keycloak.refreshToken);
   }
   return (
-    <nav>
+    keycloak.authenticated &&
+     <nav>
         <div className="nav">
         <h1>Navbar</h1>
           <input type="text" placeholder="Zoek een persoon of locatie"/>
@@ -31,10 +29,12 @@ function Navbar() {
                 <a onClick={LogoutUser}>Logout</a>
               </div>
             </div>
-            <p>{userData.name}</p>
+            <p>{keycloak.authenticated && keycloak.tokenParsed.name}</p>
           </div>
         </div>
     </nav>
+    
+   
   );
 }
 

@@ -7,14 +7,15 @@ import {Route, Redirect} from 'react-router-dom';
 
 // ...rest gets all the other props we give to this <ProtectedRoute/> component. For example 'path'.
 function ProtectedRoute({isAuth: isAuth, component: Component, ...rest}){
-    return(
-        <Route {...rest} render={(props) =>{
-            if(isAuth){
-                return <Component {...rest}/>
-            }else{
-                return <Redirect to={{pathname:'/', state:{from: props.location}}}/>
-            }
-        }}/>
+    return (
+        <Route
+            {...rest}
+            render={props => {
+                return isAuth
+                    ? <Component {...props} />
+                    : <Redirect to={{ pathname: '/', }} />
+            }}
+        />
     )
 }
 

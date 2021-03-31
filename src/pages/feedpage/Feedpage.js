@@ -3,18 +3,28 @@ import Post from './components/Post/Post';
 import "./Feedpage.css";
 import Keycloak from 'keycloak-js';
 import { decodeJWT } from '../../service/Auth';
-import { findById, register, test } from '../../service/UserService';
 import Profile from './components/Profile/Profile';
 import Menu from './components/Menu/Menu';
 import Navbar from '../../components/navbar/Navbar';
+import { useKeycloak } from "@react-keycloak/web"
+import { me } from '../../service/UserService';
 
 
+const meCall = async (user) => {
+  console.log(user);
+  await me(user).then(result =>{
+    console.log(result);
+    //  Result is either that the user is created or user already exists.
+  })
+}
 function Feedpage() {
   const [user, setUser] = useState();
-  const token = window.localStorage.getItem("react-token");
+  const {keycloak} = useKeycloak();
+
   useEffect(() => {
-    const userData = decodeJWT(token);
+    const userData = decodeJWT(keycloak.token);
     const currentUser = {
+      id: userData["sub"],
       email:  userData.email,
       firstName: userData.given_name,
       lastName: userData.family_name,
@@ -22,17 +32,11 @@ function Feedpage() {
       username: userData.preferred_username
     }
     setUser(currentUser);
-    console.log(user);
+    meCall(currentUser);
   }, []);
 
-  const TestCheckFindByApiEndpoint = async () => {
-    await findById("19547ed8-8b5e-41a2-8bb7-f1179733f57b").then(result => {
-      console.log(result)
-    });
-  }
   return (
     <div className="feedpage-row">
-      {/* <button onClick={LogoutUser}>LOGOUT</button> */}
       <div className="feedpage-column feedpage-column-1">
         <Menu />
       </div>
