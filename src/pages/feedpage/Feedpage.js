@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Post from './components/Post/Post';
-import "./Feedpage.css";
-import Keycloak from 'keycloak-js';
+import { useKeycloak } from "@react-keycloak/web";
+import React, { useEffect, useState } from 'react';
 import { decodeJWT } from '../../service/Auth';
-import Profile from './components/Profile/Profile';
-import Menu from './components/Menu/Menu';
-import Navbar from '../../components/navbar/Navbar';
-import { useKeycloak } from "@react-keycloak/web"
 import { me } from '../../service/UserService';
+import Menu from './components/Menu/Menu';
+import Post from './components/Post/Post';
+import Profile from './components/Profile/Profile';
+import "./Feedpage.css";
 
 
 const meCall = async (user) => {

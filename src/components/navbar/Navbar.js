@@ -1,11 +1,6 @@
-import React, {useEffect} from 'react';
-import User from '../../assets/menu/user.svg';
-import { decodeJWT } from '../../service/Auth';
 import { useKeycloak } from '@react-keycloak/web';
-import { findById, register, test } from '../../service/UserService';
-
-import {initOptions, keycloak, logout} from '../../service/Service';
-import Keycloak from 'keycloak-js';
+import React from 'react';
+import User from '../../assets/menu/user.svg';
 import "./Navbar.css";
 
 function Navbar() {

@@ -1,10 +1,8 @@
-import { useKeycloak } from "@react-keycloak/web"
-import Login from '../pages/login/Login';
-import Feedpage from '../pages/feedpage/Feedpage';
-import Navbar from '../components/navbar/Navbar';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { useKeycloak } from "@react-keycloak/web";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ProtectedRoute from '../components/routes/ProtectedRoute';
 import Homepage from "../pages/homepage/Homepage";
+import Login from '../pages/login/Login';
 
 export const AppRouter = () => {
     const {keycloak, initialized} = useKeycloak();

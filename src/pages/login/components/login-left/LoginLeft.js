@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, withRouter, Route, Redirect, useHistory } from 'react-router-dom';
-import { decodeJWT } from '../../../../service/Auth';
-import { findById, register, test } from '../../../../service/UserService';
-import { initOptions, keycloak, loadKeycloak } from '../../../../service/Service';
 import { useKeycloak } from "@react-keycloak/web";
+import React from 'react';
 import "./LoginLeft.css";
 
 function LoginLeft() {

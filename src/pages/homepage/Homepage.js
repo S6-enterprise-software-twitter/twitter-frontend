@@ -1,8 +1,6 @@
-import { useKeycloak } from "@react-keycloak/web"
-import Feedpage from '../feedpage/Feedpage';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from '../../components/navbar/Navbar';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Login from "../login/Login";
+import Feedpage from '../feedpage/Feedpage';
 
 function Homepage() {
     return (
