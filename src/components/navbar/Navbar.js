@@ -1,6 +1,7 @@
 import { useKeycloak } from '@react-keycloak/web';
 import React from 'react';
 import User from '../../assets/menu/user.svg';
+import {logout} from '../../service/Auth';
 import "./Navbar.css";
 
 function Navbar() {
@@ -8,8 +9,9 @@ function Navbar() {
 
   function LogoutUser(){
     keycloak.logout({ redirectUri: 'http://localhost:3000' });
-    localStorage.removeItem("react-token", keycloak.token);
-    localStorage.removeItem("react-refresh-token", keycloak.refreshToken);
+    // localStorage.removeItem("react-token", keycloak.token);
+    // localStorage.removeItem("react-refresh-token", keycloak.refreshToken);
+    logout();
   }
   return (
     keycloak.authenticated &&

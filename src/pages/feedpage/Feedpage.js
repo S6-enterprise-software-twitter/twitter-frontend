@@ -4,14 +4,14 @@ import { decodeJWT } from '../../service/Auth';
 import { me } from '../../service/UserService';
 import Menu from './components/Menu/Menu';
 import Post from './components/Post/Post';
+import Timeline from './components/Timeline/Timeline';
 import Profile from './components/Profile/Profile';
+import {login} from '../../service/Auth';
 import "./Feedpage.css";
 
-
 const meCall = async (user) => {
-  console.log(user);
   await me(user).then(result =>{
-    console.log(result);
+    console.log("Result of me call", result);
     //  Result is either that the user is created or user already exists.
   })
 }
@@ -20,6 +20,7 @@ function Feedpage() {
   const {keycloak} = useKeycloak();
 
   useEffect(() => {
+    console.log(keycloak.token);
     const userData = decodeJWT(keycloak.token);
     const currentUser = {
       id: userData["sub"],
@@ -31,6 +32,7 @@ function Feedpage() {
     }
     setUser(currentUser);
     meCall(currentUser);
+    login(keycloak.token);
   }, []);
 
   return (
@@ -40,6 +42,7 @@ function Feedpage() {
       </div>
       <div className="feedpage-column feedpage-column-2">
         <Post />
+        <Timeline/>
       </div>
       <div className="feedpage-column feedpage-column-3">
         {user != null ? <Profile user={user}/> : null}

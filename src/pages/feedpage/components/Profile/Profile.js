@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileBanner from '../../../../assets/Profile_banner.jpg';
-import ProfilePicture from '../../../../assets/Profile picture.jpg';
 
 import "./Profile.css";
 

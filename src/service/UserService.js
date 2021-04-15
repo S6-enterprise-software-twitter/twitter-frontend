@@ -1,5 +1,5 @@
 export async function me(user){
-  return await fetch('https://localhost:8001/user/me',{
+  return await fetch('http://localhost:8080/user/me',{
     method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -13,7 +13,7 @@ export async function me(user){
 }
 
 export async function findById(id){
-    return await fetch(`https://localhost:8001/user/${id}`)
+    return await fetch(`http://localhost:8080/user/${id}`)
         .then(result=>result.json())
         .then(result =>{
             return result;
@@ -21,7 +21,7 @@ export async function findById(id){
 }
 
 export async function register(user){
-   await fetch('https://localhost:8001/user/register', {
+   await fetch('http://localhost:8080/user/register', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

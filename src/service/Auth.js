@@ -8,10 +8,16 @@ export function decodeJWT(token){
     return JSON.parse(jsonPayload);
 }
 
-export function login(){
+export function getToken(){
+    return sessionStorage.getItem("token");
 
 }
 
+export function login(token){
+    sessionStorage.setItem("token", token);
+    console.log("Token set")
+}
+
 export function logout(){
-    
+    sessionStorage.removeItem("token");
 }

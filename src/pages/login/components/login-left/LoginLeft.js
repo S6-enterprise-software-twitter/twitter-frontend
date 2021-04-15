@@ -1,5 +1,6 @@
 import { useKeycloak } from "@react-keycloak/web";
 import React from 'react';
+import {login} from '../../../../service/Auth';
 import "./LoginLeft.css";
 
 function LoginLeft() {
@@ -13,10 +14,13 @@ function LoginLeft() {
   }
 
   const loginUser = () => {
+    console.log("HALLO")
     if (keycloak && !keycloak.authenticated) {
       keycloak.login({ redirectUri: 'http://localhost:3000/home' }).success(p => {
+        login(keycloak.token);
       });
     } else {
+      console.log("ELSE")
       window.location.href = "/home";
     }
   }
@@ -33,7 +37,6 @@ function LoginLeft() {
             <a href="/">Nog geen account. Registreer hier.</a>
           </div>
         </div>
-
       </div>
     </div>
   );
