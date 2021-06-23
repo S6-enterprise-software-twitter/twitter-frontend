@@ -15,6 +15,23 @@
     margin-right: 10px;
 }
 
+.singlepost-description{
+    margin-left: 43px;
+}
+
 .singlepost-details > p{
     font-size: 11px;
+}
+
+.singlepost-details > p > img{
+    margin-right: 5px;
+}
+
+.singlepost-details .like{
+    display: inline;
+    margin-right: 10px;
+}
+
+.singlepost-details .comment{
+    display: inline;
 }

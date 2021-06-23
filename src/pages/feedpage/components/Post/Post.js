@@ -4,6 +4,7 @@ import LocationSVG from "../../../../assets/svg/location.svg";
 import {postTweet} from "../../../../service/PostService";
 import {getToken,decodeJWT} from "../../../../service/Auth";
 import "./Post.css";
+import Myprofile from '../../../../components/myprofile/Myprofile';
 
 function Post() {
     const [description,SetDescription] = useState();
@@ -23,6 +24,7 @@ function Post() {
         postTweet(post,getToken()).then(result =>{
             console.log("Result from Posttweet", result);
             console.log("Post created");
+            alert("Bericht getweet!");
         })
     }
 
@@ -32,6 +34,7 @@ function Post() {
   
     return (
     <div className="section-post">
+        {/* <Myprofile/> */}
         <div className="post-block">
             <textarea placeholder="What's up for today..." onChange={(e) => {descriptionOnChange(e)}}></textarea>
             <hr/>

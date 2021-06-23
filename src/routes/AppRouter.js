@@ -16,8 +16,8 @@ export const AppRouter = () => {
         <div className="App">
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={Login}/>
-                    <ProtectedRoute path="/home" component={Homepage} isAuth={keycloak.authenticated} />
+                <Route exact path="/login" component={Login}/>
+                <ProtectedRoute path="/" component={Homepage} isAuth={keycloak.authenticated} />
                 </Switch>
             </BrowserRouter>
         </div>

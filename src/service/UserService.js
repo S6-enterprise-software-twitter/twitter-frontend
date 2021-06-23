@@ -1,5 +1,7 @@
+import { googleCloudString, localhostString } from './Service.js';
+
 export async function me(user){
-  return await fetch('http://localhost:8080/user/me',{
+  return await fetch(`${localhostString}/api/user/me`,{
     method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -13,7 +15,7 @@ export async function me(user){
 }
 
 export async function findById(id){
-    return await fetch(`http://localhost:8080/user/${id}`)
+    return await fetch(`${localhostString}/api/user/${id}`)
         .then(result=>result.json())
         .then(result =>{
             return result;
@@ -21,7 +23,7 @@ export async function findById(id){
 }
 
 export async function register(user){
-   await fetch('http://localhost:8080/user/register', {
+   await fetch(`${localhostString}/api/user/register`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -29,4 +31,14 @@ export async function register(user){
         },
         body: JSON.stringify(user)
       });
+}
+
+export async function getAll(){
+  return await fetch(`${localhostString}/api/user`, {
+      method: 'GET',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+  }).then(response => response.json())
 }

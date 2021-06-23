@@ -2,6 +2,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import React from 'react';
 import User from '../../assets/menu/user.svg';
 import {logout} from '../../service/Auth';
+import Searchbar from '../searchbar/Searchbar';
 import "./Navbar.css";
 
 function Navbar() {
@@ -13,17 +14,25 @@ function Navbar() {
     // localStorage.removeItem("react-refresh-token", keycloak.refreshToken);
     logout();
   }
+
+  function forgotAccount(){
+    alert("Account vergeten");
+    console.log("Account vergeten");
+  }
+
   return (
     keycloak.authenticated &&
      <nav>
         <div className="nav">
         <h1>Navbar</h1>
-          <input type="text" placeholder="Zoek een persoon of locatie"/>
+          <Searchbar/>
+          {/* <input type="text" placeholder="Zoek een persoon of locatie"/> */}
           <div className="nav-profile">
             <div className="dropdown">
-              <img className="nav-image" src={User} height={18}/>
+              <img  className="nav-image" src={User} height={18}/>
               <div className="dropdown-content">
-                <a onClick={LogoutUser}>Logout</a>
+                <a href="" onClick={LogoutUser}>Logout</a>
+                <a href="" onClick={forgotAccount}>Vergeet account</a>
               </div>
             </div>
             <p>{keycloak.authenticated && keycloak.tokenParsed.name}</p>
