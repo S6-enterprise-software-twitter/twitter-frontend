@@ -6,12 +6,12 @@ import {Route, Redirect} from 'react-router-dom';
 // component is the component that should be loaded
 
 // ...rest gets all the other props we give to this <ProtectedRoute/> component. For example 'path'.
-function ProtectedRoute({isAuth: isAuth, component: Component, ...rest}){
+function ProtectedRoute({isAuth: isAuthBool, component: Component, ...rest}){
     return (
         <Route
             {...rest}
             render={props => {
-                return isAuth
+                return isAuthBool
                     ? <Component {...props} />
                     : <Redirect to={{ pathname: '/login', }} />
             }}

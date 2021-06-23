@@ -1,12 +1,11 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Like from '../../../../../assets/svg/Like.svg';
-import LikeFilled from '../../../../../assets/svg/Like_filled.svg';
-import Comments from '../../../../../assets/svg/Comments.svg';
-import TemplateAvatar from '../../../../../assets/Profile_picture.jpg';
 import moment from 'moment';
+import React from 'react';
+import TemplateAvatar from '../../../../../assets/Profile_picture.jpg';
+import Comments from '../../../../../assets/svg/Comments.svg';
+import Like from '../../../../../assets/svg/Like.svg';
 import './SinglePost.css';
 
+/*
 function convertUTCDateToLocalDate(date) {
     var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
 
@@ -16,10 +15,41 @@ function convertUTCDateToLocalDate(date) {
     newDate.setHours(hours - offset);
 
     return newDate;   
-}
+}*/
 
 function SinglePost(props){
-    console.log("RENDER FROM SINGLE POST:", props);
+
+    function validateYouTubeUrl(urlToParse){
+        if (urlToParse) {
+            var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            if (urlToParse.match(regExp)) {
+                return {isValid: true, ID: RegExp.$1}
+            }
+        }
+        return false;
+    }
+   
+    function embedYoutubeLink(postDescription){
+        const response = validateYouTubeUrl(postDescription);
+        if(response.isValid){
+            return(<div className="video-responsive">
+            <iframe
+              src={`https://www.youtube.com/embed/${response.ID}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
+              allow='autoplay'
+              
+            />
+            <p>{postDescription}</p>
+          </div>
+            )
+        }else{
+            return <p>{postDescription}</p>
+        }
+    }
+    
     const post = props.post;
     
     const localTime = post.date + "Z";
@@ -31,7 +61,7 @@ function SinglePost(props){
                 <h3>@{post.username}</h3>
             </div>
             <div className="singlepost-description">
-                <p>{post.description}</p>
+                {embedYoutubeLink(post.description)}
                     {/* <img src={TemplateAvatar} alt="avatar"/> */}
                 <div className="singlepost-details">
                     <p>{moment(localTime).fromNow()}</p>

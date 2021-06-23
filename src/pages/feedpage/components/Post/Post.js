@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ImageSVG from "../../../../assets/svg/image.svg";
 import LocationSVG from "../../../../assets/svg/location.svg";
-import {postTweet} from "../../../../service/PostService";
-import {getToken,decodeJWT} from "../../../../service/Auth";
+import { decodeJWT, getToken } from "../../../../service/Auth";
+import { postTweet } from "../../../../service/PostService";
 import "./Post.css";
-import Myprofile from '../../../../components/myprofile/Myprofile';
 
 function Post() {
     const [description,SetDescription] = useState();
@@ -40,8 +39,8 @@ function Post() {
             <hr/>
             <div className="post-attachments">
                 <div>
-                   <img onClick={onImageUpload} src={ImageSVG}/>
-                   <img src={LocationSVG}/>
+                   <img alt="profile" onClick={onImageUpload} src={ImageSVG}/>
+                   <img alt="location" src={LocationSVG}/>
                 </div>
                 <button onClick={sendPost}>Post</button>
             </div>

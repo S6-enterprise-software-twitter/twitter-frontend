@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 import { getAll } from "../../service/UserService";
 import {getToken, decodeJWT} from "../../service/Auth";
 import './Searchbar.css';
 
 function Searchbar() {
-    const history = useHistory();
     const token = getToken();
     const [users, setUsers] = useState();
     const [filteredUsers, setFilteredUsers] = useState();
@@ -24,18 +22,19 @@ function Searchbar() {
             //     return user.firstname.toLowerCase().includes(term);
             // }
 
-            if(myid != user.id){
+            if(myid !== user.id){
                 return user.firstname.toLowerCase().includes(term);
             } 
         })
         setFilteredUsers(searchResult);
 
         // If input is empty, clear the array. Otherwise the users will still show up and cover up the page
-        if (event.target.value == "") {
+        if (event.target.value === "") {
             setFilteredUsers([]);
         }
     }
 
+    /*
     function findFollowedUsers() {
         // Get alle the people this user follows bij ID - http://localhost:8082//follower/followings
 
@@ -46,20 +45,13 @@ function Searchbar() {
         // Add an extra column with "Followed : true or false",
 
         // In render, if user.follower.followed dan ontvolg anders als text volg.
-    }
+    }*/
 
     function goToUserProfile(user) {
         console.log(user)
         // history.push(`/user/${user.id}`);
         window.location.href = `/user/${user.id}`;
         // window.location.href = `/user/${user.username}`;
-    }
-
-    const getAllUsers = async () => {
-        await getAll().then(result => {
-            console.log("Result of me call", result);
-            setUsers(result);
-        })
     }
 
     useEffect(() => {
@@ -73,9 +65,9 @@ function Searchbar() {
             <input type="text" placeholder="Zoek een persoon of locatie" onChange={(e) => searchOnChange(e)} />
             <div className="search-dropdown-content">
                 <ul>
-                    {filteredUsers && filteredUsers.map(user => (
-                        <li onClick={() => goToUserProfile(user)}>
-                            <a>{user.firstname} {user.lastname}</a>
+                    {filteredUsers && filteredUsers.map((user,i) => (
+                        <li key={i} onClick={() => goToUserProfile(user)}>
+                            <div>{user.firstname} {user.lastname}</div>
                             {/* <p>@{user.username}</p> */}
                         </li>
                     ))}

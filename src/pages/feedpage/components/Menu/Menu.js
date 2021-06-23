@@ -1,5 +1,4 @@
 import { React } from 'react';
-import { useHistory } from "react-router-dom";
 import Coffee from '../../../../assets/menu/coffee.svg';
 import GoogleAds from '../../../../assets/menu/Google-Ads.png';
 import Hashtag from '../../../../assets/menu/hashtag.svg';
@@ -11,7 +10,6 @@ import "./Menu.css";
 
 
 function Menu(){
-    const history = useHistory();
 
     function goToHome(){
         window.location.href = "/home";
@@ -29,10 +27,10 @@ function Menu(){
             <div className="menu-block">
                 <h3>Menu</h3>
                 <ul>
-                    <li onClick={goToHome}><img src={Coffee} height={16}/>Startpagina</li>
-                    <li><img src={Notification} height={18}/>Meldingen</li>
-                    <li><img src={Hashtag} height={18}/>Verkennen</li>
-                    <li onClick={goToProfile}><img src={User} height={18}/>Profile</li>
+                    <li onClick={goToHome}><img alt="Startpage" src={Coffee} height={16}/>Startpagina</li>
+                    <li><img alt="Notifications" src={Notification} height={18}/>Meldingen</li>
+                    <li><img alt="Explore" src={Hashtag} height={18}/>Verkennen</li>
+                    <li onClick={goToProfile}><img alt="Profile" src={User} height={18}/>Profile</li>
                 </ul>
             </div>
             <div className="google-block">

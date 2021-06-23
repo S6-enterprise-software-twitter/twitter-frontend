@@ -29,10 +29,10 @@ function Navbar() {
           {/* <input type="text" placeholder="Zoek een persoon of locatie"/> */}
           <div className="nav-profile">
             <div className="dropdown">
-              <img  className="nav-image" src={User} height={18}/>
+              <img className="nav-image" alt="navimage" src={User} height={18}/>
               <div className="dropdown-content">
-                <a href="" onClick={LogoutUser}>Logout</a>
-                <a href="" onClick={forgotAccount}>Vergeet account</a>
+                <button onClick={LogoutUser}>Logout</button>
+                <button onClick={forgotAccount}>Vergeet mijn account</button>
               </div>
             </div>
             <p>{keycloak.authenticated && keycloak.tokenParsed.name}</p>

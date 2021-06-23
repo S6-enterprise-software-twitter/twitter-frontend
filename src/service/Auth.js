@@ -15,7 +15,6 @@ export function getToken(){
 
 export function login(token){
     sessionStorage.setItem("token", token);
-    console.log("Token set")
 }
 
 export function logout(){

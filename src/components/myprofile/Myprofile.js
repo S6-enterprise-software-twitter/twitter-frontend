@@ -65,7 +65,7 @@ function Myprofile(props){
                     <h5>Bio</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec interdum purus. Aliquam accumsan, arcu et vehicula venenatis, purus leo sagittis tortor,</p>
                     <h5>Website</h5>
-                    <a>Website.com</a>
+                    <p>Website.com</p>
                     <h5>Location</h5>
                     <p>Eindhoven</p>
                     {/* {isFollowing == true ? <button className="unfollow" onClick={onUnfollowClick}>Unfollow</button> : <button onClick={onFollowClick}>Follow</button>  } */}

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import ProfileBanner from '../../../../assets/Profile_banner.jpg';
-import {getThePeopleYouFollow, getThePeopleThatFollowYou} from '../../../../service/FollowerService';
-import {getToken, decodeJWT} from '../../../../service/Auth';
-
+import React, { useEffect, useState } from 'react';
+import { getToken } from '../../../../service/Auth';
+import { getThePeopleThatFollowYou, getThePeopleYouFollow } from '../../../../service/FollowerService';
 import "./Profile.css";
+
 
 function Profile(props){
     const user = props.user;
@@ -14,12 +13,12 @@ function Profile(props){
     useEffect(() =>{
         getThePeopleYouFollow(token).then(result =>{
             setYourFollowings(result);
-            console.log(result);
+            console.log("The people you follow: ", result);
         });
 
         getThePeopleThatFollowYou(token).then(result =>{
             setFollowers(result);
-            console.log(result);
+            console.log("The people that follow you: ", result);
         });
     },[])
     // console.log(user);

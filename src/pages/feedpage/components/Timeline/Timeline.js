@@ -7,23 +7,6 @@ import './Timeline.css';
 function Timeline(){
     const [showTimelineBool, setShowTimelineBool] = useState(true);
     const [posts, setPosts] = useState([]);
-    // const posts=[
-    //     {
-    //         description: "lorem ipsum"
-    //     },
-    //     {
-    //         description: "lorem ipsum"
-    //     },
-    //     {
-    //         description: "lorem ipsum"
-    //     },
-    //     {
-    //         description: "lorem ipsum"
-    //     },
-    //     {
-    //         description: "lorem ipsum"
-    //     }
-    // ]
     
     function showTimeline(){
         setShowTimelineBool(true);
@@ -41,9 +24,8 @@ function Timeline(){
             const token = getToken();
             if(!!token){
                 const posts = await getTimeline(token);
-                console.log(posts);
                 if(posts.length > 0){
-                    console.log(posts);
+                    console.log("All posts from timeline: ", posts);
                     posts.sort(function(a,b){
                         // Turn your strings into dates, and then subtract them
                         // to get a value that is either negative, positive, or zero.
@@ -55,16 +37,6 @@ function Timeline(){
           }
 
       },[] );
-
-    // function testFunction(){
-    //     if(showTimelineBool){
-    //         return (
-    //             posts.map(post => (
-    //                 <SinglePost/>
-    //             ))
-    //         )
-    //     }
-    // }
 
     return(
         <div className="section-timeline">
